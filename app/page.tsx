@@ -1,65 +1,139 @@
-import Image from "next/image";
+import { DashboardNavbar } from "@/components/dashboard-navbar";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Check } from "lucide-react";
 
-export default function Home() {
+const plans = [
+  {
+    name: "Starter",
+    price: "Free",
+    description: "Perfect for tyring out VideoAI",
+    features: [
+      "5 vides per month",
+      "720 export quality",
+      "Basic templates",
+      "Watermark on export",
+      "Community support",
+    ],
+    cta: "Get started",
+  },
+
+  {
+    name: "Pro",
+    price: "$19.99",
+    description: "For creators who need more power",
+    period: "/month",
+    features: [
+      "Unlimited vides",
+      "4k export quality",
+      "Pro templates",
+      "No watermark on export",
+      "Priority support",
+    ],
+    cta: "Get started",
+  },
+];
+
+export default function Page() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <>
+      <DashboardNavbar />
+      <main className="min-h-screen bg-background">
+        <section className="relative overflow-hidden pt-32 pb-20">
+          <div className="inset-0 -z-10">
+            <div
+              className="
+            inset-0 
+            bg-[linear-gradient(to_right,#1a1a1a_1px,transparent_1px), linear_gradient(to_bottom,#1a1a1a_1px,transparent_1px)]
+            bg-size-[4rem_4rem]
+            mask-[radial-gradient(ellips_60%_50%_at_50%_0%,#000_70%,transparent_110%)]
+          "
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+              <div
+                className="
+            absolute left-1/2 top-0 -z-10 h-150 w-150 -translate-x-1/2 rounded-full 
+            bg-accent/10 blur-[120px]"
+              />
+
+              <div className="mx-auto max-w-7xl px-6 text-center">
+                <h1
+                  className="mx-auto max-w-7xl text-balance text-4xl font-bold 
+                tracking-tight text-foreground
+                "
+                >
+                  Create stunning videos with{" "}
+                  <span className="text-blue-500">AI matic</span>
+                </h1>
+                <p className="mx-auto max-w-2xl text-pretty text-lg text-muted-foreground">
+                  Transform your ideas into professional videos in minutes. Just
+                  describe what you want, and let our AI handle the rest. No
+                  editing skills required.
+                </p>
+
+                <div className="mt-10 flex flex-col items-center justify-center gap-4">
+                  <Button
+                    className="gap-2 bg-blue-500 text-background flex items-center justify-between"
+                    size="lg"
+                  >
+                    Start creating
+                    <ArrowRight />
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-20">
+          <div className="mx-auto max-w-7xl px-6">
+            <div className="text-center">
+              <h1 className="text-3xl font-bold text-foreground">
+                Simple, transparent pricing
+              </h1>
+              <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
+                Start free and scale you grow. No hidden fess, no surprise.
+              </p>
+            </div>
+
+            <div className="mt-16 grid grid-cols-2 gap-8">
+              {plans.map((plan) => (
+                <div
+                  key={plan.name}
+                  className="relative rounded-xl border p-8 border-border bg-card"
+                >
+                  <div className="text-center">
+                    <h3 className="text-lg font-semibold text-foreground">
+                      {plan.name}
+                    </h3>
+                    <div className="mt-4 flex items-baseline justify-center gap-1">
+                      <span className="text-4xl font-bold text-foreground">
+                        {plan.price}
+                      </span>
+                      {plan.period && (
+                        <span className="text-muted-foreground">
+                          {plan.period}
+                        </span>
+                      )}
+                    </div>
+
+                    <ul className="mt-8 space-y-4">
+                      {plan.features.map((f) => (
+                        <li key={f} className="flex items-center gap-3 text-sm">
+                          <Check />
+                          <span className="text-muted-foreground"> {f} </span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <Button className="mt-8 w-full bg-secondary text-foreground">
+                      {plan.cta}
+                    </Button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
       </main>
-    </div>
+    </>
   );
 }
